@@ -12,6 +12,12 @@ namespace upc {
 
     for (unsigned int l = 0; l < r.size(); ++l) {
   		/// \TODO Compute the autocorrelation r[l]
+      /// \DONE (autocorrelation r[l])
+        r[l] = 0;
+      for (unsigned int n = l; n < x.size(); n++)
+      {
+        r[l] += x[n] * x[n - l];
+      }
     }
 
     if (r[0] == 0.0F) //to avoid log() and divide zero 
@@ -19,14 +25,20 @@ namespace upc {
   }
 
   void PitchAnalyzer::set_window(Window win_type) {
+     float a0 = 0.53836;
+      float a1 = 1-a0;
     if (frameLen == 0)
       return;
-
+     
     window.resize(frameLen);
 
     switch (win_type) {
     case HAMMING:
       /// \TODO Implement the Hamming window
+
+      for (unsigned int i=0;i<frameLen;i++){
+        window[i]= a0 -a1*cos((2*M_PI*i)/(frameLen-1));
+      }
       break;
     case RECT:
     default:
