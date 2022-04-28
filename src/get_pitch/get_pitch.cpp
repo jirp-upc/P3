@@ -26,6 +26,8 @@ Usage:
 
 Options:
     -h, --help  Show this screen
+    -c FLOAT, --c_thr=FLOAT         Umbral Central Clipping [default: 0.0003]
+    -s INT, --samples=INT           Samples del filtro de mediana [default: 3]
     --version   Show the version of the project
 
 Arguments:
@@ -46,7 +48,8 @@ int main(int argc, const char *argv[]) {
 
 	std::string input_wav = args["<input-wav>"].asString();
 	std::string output_txt = args["<output-txt>"].asString();
-
+  float c_thr = stof(args["--c_thr"].asString());
+  unsigned int samples = stoi(args["--samples"].asString());
   // Read input sound file
   unsigned int rate;
   vector<float> x;
@@ -64,6 +67,16 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
   /// central-clipping or low pass filtering may be used.
+printf("Preprocessing:\n");
+      for (unsigned int i = 0; i < x.size(); i++)
+  {
+    printf("x[i] = %f",x[i]);
+    if (abs(x[i]) < c_thr){
+       x[i] = 0; 
+       printf("\t (x[i]<%f) -> x[i] = 0", c_thr);
+    }
+    printf("\n");
+  }
   
   // Iterate for each frame and save values in f0 vector
   vector<float>::iterator iX;
@@ -76,6 +89,31 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Postprocess the estimation in order to supress errors. For instance, a median filter
   /// or time-warping may be used.
+
+if(samples > f0.size()){ //Si se comete error poner igual o más muestras de filtro de mediana que las de sample, no se realiza.
+    samples = f0.size();
+  }
+
+
+if(samples%2 != 0 && samples>1){
+  samples += -1;
+}else if (samples < 0){
+  samples = 1;
+}
+
+   for (unsigned int i = 0; i < (f0.size()-samples+1); i++){
+    vector<float> med_sample;
+      for(unsigned int j = 0; j<samples;j++){
+        med_sample.push_back(f0[i+j]);
+      }
+    std::sort (med_sample.begin(), med_sample.end());
+   if(samples%2==0){ //Número de muestras par, se hace promedio de las dos centrales
+      f0[i] = (med_sample[(int) samples/2]);
+   }else{            //Número de muestras impar, se coge central
+      f0[i] = med_sample[(int) samples/2];
+   }
+  }
+
 
   // Write f0 contour into the output file
   ofstream os(output_txt);
