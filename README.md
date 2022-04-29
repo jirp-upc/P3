@@ -122,6 +122,20 @@ Ejercicios de ampliación
   Entre las posibles mejoras, puede escoger una o más de las siguientes:
 
   * Técnicas de preprocesado: filtrado paso bajo, diezmado, *center clipping*, etc.
+    
+    >Se ha optado por realizar un center clipping:
+    >```cpp
+    >   /// \TODO
+    >/// Preprocess the input signal in order to ease pitch estimation. For instance,
+    >/// central-clipping or low pass filtering may be used.
+    >/// \DONE Central-Clipping realizado
+    >  for (unsigned int i = 0; i < x.size(); i++){
+    >    if (abs(x[i]) < c_thr){
+    >       x[i] = 0; 
+    >    }
+    >  }
+    >```
+
   * Técnicas de postprocesado: filtro de mediana, *dynamic time warping*, etc.
   * Métodos alternativos a la autocorrelación: procesado cepstral, *average magnitude difference function*
     (AMDF), etc.

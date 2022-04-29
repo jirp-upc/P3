@@ -73,6 +73,7 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
   /// central-clipping or low pass filtering may be used.
+  /// \DONE Central-Clipping realizado
       for (unsigned int i = 0; i < x.size(); i++)
   {
     if (abs(x[i]) < c_thr){
