@@ -62,6 +62,11 @@ Ejercicios básicos
    >    contador++;
    >   archivo.close();
    >}
+   >```
+   >Escogemos el fichero `rl050.wav` para realizar la demostración.
+   >>*Gráfica de amplitud temporal del fichero y tramo de 30ms escogido*
+   >>![Vista temporal de rl050.wav](img/rl050_time.png)
+   >>![Zoom sobre muestra de 30ms de rl050.wav](img/rl050_time_zoom.png)
 	 
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
