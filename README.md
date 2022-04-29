@@ -137,6 +137,22 @@ Ejercicios de ampliación
     >```
 
   * Técnicas de postprocesado: filtro de mediana, *dynamic time warping*, etc.
+    >Se ha optado por realizar un filtro de mediana de 3 muestras para eliminar ruidos transitorios:
+    >```cpp
+    >/// \TODO
+    >/// Postprocess the estimation in order to supress errors. For instance, a median filter
+    >/// or time-warping may be used.
+    >/// \DONE
+    >/// Filtro de mediana de tres posiciones implementado
+    >for (unsigned int i = 1; i < f0.size()-1; i++){
+    >vector<float> aux;
+    >aux.push_back(f0[i-1]);
+    >aux.push_back(f0[i]);
+    >aux.push_back(f0[i+1]);
+    >std::sort (aux.begin(), aux.end());
+    >f0[i] = aux[1];
+    >}
+    >```
   * Métodos alternativos a la autocorrelación: procesado cepstral, *average magnitude difference function*
     (AMDF), etc.
   * Optimización **demostrable** de los parámetros que gobiernan el estimador, en concreto, de los que
