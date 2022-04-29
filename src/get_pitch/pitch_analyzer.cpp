@@ -66,6 +66,9 @@ namespace upc {
     if(r1norm < umb_r1r0 || rmaxnorm < umb_rmaxnorm || pot < umb_pot)
       return true;
     return false;
+
+    
+
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> & x) const {
