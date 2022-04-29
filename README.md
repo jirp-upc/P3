@@ -110,9 +110,12 @@ Ejercicios de ampliación
 
   * Inserte un *pantallazo* en el que se vea el mensaje de ayuda del programa y un ejemplo de utilización
     con los argumentos añadidos.
-    
+
+    >Mensaje de ayuda del programa: 
 ![Help de get_pitch](img/get_pitch_help.png)
 
+    >Ejemplo de utilización de parámetros adicionales
+    ![Ejemplo con argumentos añadidos](img/command_sample.png)
 - Implemente las técnicas que considere oportunas para optimizar las prestaciones del sistema de estimación
   de pitch.
 
