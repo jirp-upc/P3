@@ -88,10 +88,21 @@ namespace upc {
 	///    - The lag corresponding to the maximum value of the pitch.
     ///	   .
 	/// In either case, the lag should not exceed that of the minimum value of the pitch.
+  /// \DONE Hecho.
 
+    vector<float>::const_iterator iRpos;
+    for(iRpos=iRMax;iRpos<r.end();iRpos++){
+      if(*iRpos > *iRMax){
+        iRMax = iRpos;
+      }
+    }
     unsigned int lag = iRMax - r.begin();
 
     float pot = 10 * log10(r[0]);
+
+    for(unsigned int i = 0; i< r.size();i++){
+
+    }
 
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
