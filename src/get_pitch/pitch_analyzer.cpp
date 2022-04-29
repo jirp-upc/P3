@@ -62,6 +62,7 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
+    /// \DONE Hecho. 
    if(pot < umb_pot || r1norm < umb_r1r0 || rmaxnorm < umb_rmaxnorm) return true;
    else return false;
   }
@@ -100,9 +101,6 @@ namespace upc {
 
     float pot = 10 * log10(r[0]);
 
-    for(unsigned int i = 0; i< r.size();i++){
-
-    }
 
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
