@@ -122,6 +122,10 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
 	    principales candidatos para determinar la sonoridad de la voz: el nivel de potencia de la señal
 		(r[0]), la autocorrelación normalizada de uno (r1norm = r[1] / r[0]) y el valor de la
 		autocorrelación en su máximo secundario (rmaxnorm = r[lag] / r[0]).
+    
+    >Gráfica conjunta: 
+  ![Help de get_pitch](img/GraficasConjuntas.png)
+
 
 		Puede considerar, también, la conveniencia de usar la tasa de cruces por cero.
 
@@ -131,6 +135,9 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
 		ilustrativa del resultado de ambos estimadores.
+
+    >Comparativa: 
+  ![Help de get_pitch](img/ComparativaPitch.png)
      
 		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
 	 	el uso de alternativas de mayor calidad (particularmente Python).
@@ -138,6 +145,9 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
+
+  >Resultado score total: 
+  ![Help de get_pitch](img/evaluation.png)
 
 Ejercicios de ampliación
 ------------------------
