@@ -14,7 +14,6 @@ namespace upc {
   void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
     
     archivo.open("autocor" + to_string(contador) + ".txt");
-    contador++;
     for (unsigned int l = 0; l < r.size(); ++l) {
   		/// \TODO Compute the autocorrelation r[l]
       /// \DONE Autocorrelation *computed*

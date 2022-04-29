@@ -48,7 +48,6 @@ Ejercicios básicos
    >  ofstream archivo;
    > void PitchAnalyzer::autocorrelation(const vector<float> &x,vector<float> &r) const {
    >    archivo.open("autocor" + to_string(contador) + ".txt");
-   >    contador++;
    >    for (unsigned int l = 0; l < r.size(); ++l) {
    >       r[l] = 0;
    >       for(unsigned int n = l; n < x.size(); n++){
@@ -67,6 +66,18 @@ Ejercicios básicos
    >>*Gráfica de amplitud temporal del fichero y tramo de 30ms escogido*
    >>![Vista temporal de rl050.wav](img/rl050_time.png)
    >>![Zoom sobre muestra de 30ms de rl050.wav](img/rl050_time_zoom.png)
+   >
+   >Nos fijamos el instante de inicio del tramo que hemos seleccionado:
+   >>![Detalle tiempo](img/rl050_detail.png)
+   >>(*Inicio en 656ms, duración de 30ms*)
+   >
+   >Estamos escogiendo tramas de 30 ms con un desplazamiento de 15ms, 656ms/15ms equivale a aproximadamente la trama 44, por lo que escogeremos esta trama para graficar su autocorrelación.
+   > 
+   >Fijándonos en la salida de get_pitch:
+   >>![Pitch por tramas](img/rl050_pitch_tramas.png)
+   > 
+   >Y analizando la autocorrelación de la trama 44:
+   >>
 	 
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
