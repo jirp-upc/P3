@@ -35,7 +35,31 @@ Ejercicios básicos
    * Inserte una gŕafica donde, en un *subplot*, se vea con claridad la señal temporal de un segmento de
      unos 30 ms de un fonema sonoro y su periodo de pitch; y, en otro *subplot*, se vea con claridad la
 	 autocorrelación de la señal y la posición del primer máximo secundario.
-
+   
+   >Para realizar este procedimiento, modificamos la función de autocorrelación temporalmente para obtener los datos de autocorrelación por tramas en ficheros:
+   >```cpp
+   >...
+   >#include <fstream>
+   >...
+   >namespace upc {
+   >  unsigned int contador = 1;
+   >  ofstream archivo;
+   > void PitchAnalyzer::autocorrelation(const vector<float> &x,vector<float> &r) const {
+   >    archivo.open("autocor" + to_string(contador) + ".txt");
+   >    contador++;
+   >    for (unsigned int l = 0; l < r.size(); ++l) {
+   >       r[l] = 0;
+   >       for(unsigned int n = l; n < x.size(); n++){
+   >           r[l] += x[n] * x[n - l];
+   >       }
+   >    archivo << r[l] << "\n";
+   >    }
+   >    if (r[0] == 0.0F){ //to avoid log() and divide zero 
+   >       r[0] = 1e-10; 
+   >    }
+   >    contador++;
+   >   archivo.close();
+   >}
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
 	 hacerlo. Se valorará la utilización de la biblioteca matplotlib de Python.
 
@@ -162,6 +186,7 @@ Ejercicios de ampliación
       > - **Potencia de la señal**: Alta en fonemas sonoros, baja en sordos.
       > - **Cociente de autocorrelación a una muestra de distancia (r[1]/r[0])**: Los sonidos sordos presentan una gran incorrelación entre muestras debido a la no periodicidad general, por lo que, de nuevo, este cociente será mayor en fonemas sonoros que en los sordos.
       > - **Cociente de autocorrelación a muestra pitch (k) y máximo (origen) (r[k]/r[0])**: En caso de que el algoritmo de búsqueda de pitch halle un segundo máximo en un fonema sordo, la magnitud de la diferencia será muchísimo menor que en el de uno sonoro. 
+      >
       >
       >Se ha utilizado el siguiente sistema de decisión, ya citado en el apartado anterior (puesto que no conservamos la primera versión del decisor):
       >```cpp
