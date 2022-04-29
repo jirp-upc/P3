@@ -27,7 +27,7 @@ Usage:
 Options:
     -h, --help  Show this screen
     -c FLOAT, --c_thr=FLOAT         Umbral Central Clipping [default: 0.00031]
-    -p FLOAT, --pot=FLOAT           Potencia (Umbral decisión voiced) [default: -22]
+    -p FLOAT, --pot=FLOAT           Potencia (Umbral decisión voiced) [default: -20]
     -a FLOAT, --r1r0=FLOAT          r1/r0 (Umbral decisión voiced) [default: 0.88]
     -m FLOAT, --rmaxnorm=FLOAT      rmaxnorm (Umbral decisión voiced) [default: 0.425]
     
