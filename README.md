@@ -79,7 +79,7 @@ Ejercicios básicos
    >Y analizando la autocorrelación de la trama 44:
    >>![Autocorrelación trama 44](img/rl050_autocor.png)
    >
-	 >Vemos concordancia con lo esperado.
+	 >Vemos la relación esperada.
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
 ```cpp
