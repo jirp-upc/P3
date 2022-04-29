@@ -30,6 +30,9 @@ namespace upc {
       samplingFreq, ///< sampling rate (in samples per second). Has to be set in the constructor call
       npitch_min, ///< minimum value of pitch period, in samples
       npitch_max; ///< maximum value of pitch period, in samples
+    float umb_pot, ///< Umbral Potencia
+    umb_r1r0,     ///< Umbral r1r0
+    umb_rmaxnorm; ///< Umbral Rmax norm
  
 	///
 	/// Computes correlation from lag=0 to r.size()
@@ -49,10 +52,18 @@ namespace upc {
 
   public:
     PitchAnalyzer(	unsigned int fLen,			///< Frame length in samples
-					unsigned int sFreq,			///< Sampling rate in Hertzs
+					unsigned int sFreq,			///< Sampling rate in 
+          float mb_pot,        ///< Potencia en dB (Umbral de decisión voiced/unvoiced) 
+          float mb_r1r0,       ///< Cociente r1/r0 (Umbral de decisión voiced/unvoiced) 
+          float mb_rmaxnorm,   ///< Umbral r normalizada (Umbral de decisión voiced/unvoiced) 
 					Window w=PitchAnalyzer::HAMMING,	///< Window type
 					float min_F0 = MIN_F0,		///< Pitch range should be restricted to be above this value
 					float max_F0 = MAX_F0		///< Pitch range should be restricted to be below this value
+          /*
+float umb_pot = stof(args["--pot"].asString());
+  float umb_r1r0 = stof(args["--r1r0"].asString());
+  float umb_rmaxnorm = stof(args["--rmaxnorm"].asString());
+          */
 				 )
 	{
       frameLen = fLen;

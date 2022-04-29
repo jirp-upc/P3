@@ -27,6 +27,9 @@ Usage:
 Options:
     -h, --help  Show this screen
     -c FLOAT, --c_thr=FLOAT         Umbral Central Clipping [default: 0.0003]
+    -p FLOAT, --pot=FLOAT       Potencia (Umbral decisión voiced)  [default: -25]
+    -a FLOAT, --r1r0=FLOAT    r1/r0    (Umbral decisión voiced)  [default: 0.65]
+    -m FLOAT, --rmaxnorm=FLOAT  rmaxnorm (Umbral decisión voiced) [default: 0.425]
     
     --version   Show the version of the project
 
@@ -49,6 +52,9 @@ int main(int argc, const char *argv[]) {
 	std::string input_wav = args["<input-wav>"].asString();
 	std::string output_txt = args["<output-txt>"].asString();
   float c_thr = stof(args["--c_thr"].asString());
+  float umb_pot = stof(args["--pot"].asString());
+  float umb_r1r0 = stof(args["--r1r0"].asString());
+  float umb_rmaxnorm = stof(args["--rmaxnorm"].asString());
   //unsigned int samples = stoi(args["--samples"].asString());
   // Read input sound file
   unsigned int rate;
@@ -62,7 +68,7 @@ int main(int argc, const char *argv[]) {
   int n_shift = rate * FRAME_SHIFT;
 
   // Define analyzer
-  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::HAMMING, 50, 500);
+  PitchAnalyzer analyzer(n_len, rate,umb_pot,umb_r1r0,umb_rmaxnorm, PitchAnalyzer::HAMMING, 50, 500);
 
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
