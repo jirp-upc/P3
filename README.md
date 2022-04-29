@@ -157,6 +157,25 @@ Ejercicios de ampliación
     (AMDF), etc.
   * Optimización **demostrable** de los parámetros que gobiernan el estimador, en concreto, de los que
     gobiernan la decisión sonoro/sordo.
+
+    >Se ha optado por una solución conservadora, teniendo en cuenta en el proceso de decisión sonoro/sorda los siguientes parámetros:
+      > - **Potencia de la señal**: Alta en fonemas sonoros, baja en sordos.
+      > - **Cociente de autocorrelación a una muestra de distancia (r[1]/r[0])**: Los sonidos sordos presentan una gran incorrelación entre muestras debido a la no periodicidad general, por lo que, de nuevo, este cociente será mayor en fonemas sonoros que en los sordos.
+      > - **Cociente de autocorrelación a muestra pitch (k) y máximo (origen) (r[k]/r[0])**: En caso de que el algoritmo de búsqueda de pitch halle un segundo máximo en un fonema sordo, la magnitud de la diferencia será muchísimo menor que en el de uno sonoro. 
+      >
+      >Se ha utilizado el siguiente sistema de decisión, ya citado en el apartado anterior (puesto que no conservamos la primera versión del decisor):
+      >```cpp
+      >bool PitchAnalyzer::unvoiced(float pot, float >r1norm, float rmaxnorm) const {
+      >/// \TODO ...
+      >/// \DONE Se ha usado una combinación de la potencia, la r1norm y la rmaxnorm
+      >if(r1norm < umb_r1r0 || rmaxnorm < umb_rmaxnorm || pot < umb_pot) return true;
+      >return false;
+      >}
+      >```
+
+
+
+
   * Cualquier otra técnica que se le pueda ocurrir o encuentre en la literatura.
 
   Encontrará más información acerca de estas técnicas en las [Transparencias del Curso](https://atenea.upc.edu/pluginfile.php/2908770/mod_resource/content/3/2b_PS%20Techniques.pdf)
