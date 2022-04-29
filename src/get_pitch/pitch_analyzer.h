@@ -70,6 +70,9 @@ float umb_pot = stof(args["--pot"].asString());
       samplingFreq = sFreq;
       set_f0_range(min_F0, max_F0);
       set_window(w);
+      umb_pot = mb_pot;
+      umb_r1r0 = mb_r1r0;
+      umb_rmaxnorm = mb_rmaxnorm;
     }
 
 	///

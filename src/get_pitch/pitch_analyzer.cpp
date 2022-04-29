@@ -63,7 +63,7 @@ namespace upc {
     ///   or compute and use other ones.
     /// \DONE Se ha usado una combinación de la potencia, la r1norm y la rmaxnorm
 
-    if(r1norm < umb_r1r0 || rmaxnorm < umb_rmaxnorm || pot < umb_pot)
+    if(r1norm < umb_r1r0 && rmaxnorm < umb_rmaxnorm && pot < umb_pot)
       return true;
     return false;
   }
