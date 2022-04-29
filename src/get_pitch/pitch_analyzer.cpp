@@ -9,11 +9,11 @@ using namespace std;
 
 /// Name space of Universitat Politècnica de Catalunya
 namespace upc {
-  unsigned int contador = 1;
-  ofstream archivo;
+  //unsigned int contador = 1;
+  //ofstream archivo;
   void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
     
-    archivo.open("autocor" + to_string(contador) + ".txt");
+    //archivo.open("autocor" + to_string(contador) + ".txt");
     for (unsigned int l = 0; l < r.size(); ++l) {
   		/// \TODO Compute the autocorrelation r[l]
       /// \DONE Autocorrelation *computed*
@@ -22,14 +22,14 @@ namespace upc {
       for(unsigned int n = l; n < x.size(); n++){
         r[l] += x[n] * x[n - l];
       }
-      archivo << r[l] << "\n";
+      //archivo << r[l] << "\n";
     }
 
     if (r[0] == 0.0F){ //to avoid log() and divide zero 
       r[0] = 1e-10; 
     }
-    contador++;
-    archivo.close();
+    //contador++;
+    //archivo.close();
 
   }
 
