@@ -148,7 +148,8 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
 	`pitch_db/train`..
 
   >Resultado score total: 
-  ![Score Total (summary)](img/final_score.png)
+  >
+  >![Score Total (summary)](img/final_score.png)
 
 Ejercicios de ampliación
 ------------------------
