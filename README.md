@@ -123,14 +123,16 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
 		(r[0]), la autocorrelación normalizada de uno (r1norm = r[1] / r[0]) y el valor de la
 		autocorrelación en su máximo secundario (rmaxnorm = r[lag] / r[0]).
     
-    >Gráfica conjunta: 
-  ![Help de get_pitch](img/GraficasConjuntas.png)
+    Puede considerar, también, la conveniencia de usar la tasa de cruces por cero.
 
-
-		Puede considerar, también, la conveniencia de usar la tasa de cruces por cero.
-
-	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
+	  Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
+    >Gráfica conjunta:
+    > 
+    >![Help de get_pitch](img/pitch_autocor_pot_aut12.png)
+
+
+		
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica

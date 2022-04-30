@@ -119,7 +119,7 @@ namespace upc {
     //change to #if 1 and compile
 #if 0
     if (r[0] > 0.0F){
-      //cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
+      cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
       cout << r[0];
       for(unsigned int i = 1; i < r.size(); i++){
         cout << '\t' << r[i];
