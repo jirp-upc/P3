@@ -135,19 +135,20 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
 		ilustrativa del resultado de ambos estimadores.
-
-    >Comparativa: 
-  ![Help de get_pitch](img/ComparativaPitch.png)
-     
-		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
+    
+    Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
 	 	el uso de alternativas de mayor calidad (particularmente Python).
+    >Comparativa: 
+  ![Comparativa de pitch obtenidos ](img/pitch_comparator.png)
+     
+		
   
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
 
   >Resultado score total: 
-  ![Help de get_pitch](img/evaluation.png)
+  ![Score Total (summary)](img/final_score.png)
 
 Ejercicios de ampliación
 ------------------------
